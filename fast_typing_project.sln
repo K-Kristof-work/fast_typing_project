@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fast_typing_project", "fast_typing_project\fast_typing_project.csproj", "{CEF1BAF7-479C-4851-AAF9-4C4BBAAA1459}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|anycpu = Debug|anycpu
+		Release|anycpu = Release|anycpu
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEF1BAF7-479C-4851-AAF9-4C4BBAAA1459}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{CEF1BAF7-479C-4851-AAF9-4C4BBAAA1459}.Debug|anycpu.Build.0 = Debug|anycpu
+		{CEF1BAF7-479C-4851-AAF9-4C4BBAAA1459}.Release|anycpu.ActiveCfg = Release|anycpu
+		{CEF1BAF7-479C-4851-AAF9-4C4BBAAA1459}.Release|anycpu.Build.0 = Release|anycpu
+	EndGlobalSection
+EndGlobal
