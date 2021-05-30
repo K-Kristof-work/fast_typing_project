@@ -35,6 +35,7 @@
     <Compile Include="Information.cs" />
     <Compile Include="IModes.cs" />
     <Compile Include="Classic.cs" />
+    <Compile Include="BasicModeFunctions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

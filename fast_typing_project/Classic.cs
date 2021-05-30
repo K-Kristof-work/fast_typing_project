@@ -1,44 +1,76 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System;
 using System.Threading;
-using System.IO;
-using System.Collections.Generic;
 
 namespace fast_typing_project
 {
-    class Classic : IModes
+
+    class Classic : BasicModeFunctions, IModes
     {
         public string Introduction { get; set; }
+        public float DurationInSeconds { get; set; }
         private List<string> words = new List<string>();
 
         public Classic()
         {
-            Introduction = "The classic 60 sec typing test.";
+            Introduction = "The classic typing test.";
         }
 
-        public void Start()
+        public void Awake(float duration)
         {
             Console.Clear();
-            Load();
-
-            for (int i = 3; i < 0; i--)
-            {
-                Console.Write(i);
-                Thread.Sleep(500);
-            }
-            
-
+            words = Load("Classic.txt");
+            CountdownFromThree();
+            breakDuration = TimeSpan.FromSeconds(duration);
+            startTime = DateTime.UtcNow;
+            Start();
         }
 
-        private void Load()
+        private void Start()
         {
-            StreamReader getWordsFromFile = new StreamReader("classic.txt");
-            int i = 0;
-            while (!getWordsFromFile.EndOfStream)
+            string inputText = null;
+            string fullText = null;
+            string currentText = null;
+
+            currentText = MakeLineOfWords();
+            fullText += currentText;
+            Console.WriteLine(currentText);
+
+            while (DateTime.UtcNow - startTime < breakDuration)
             {
-                words.Add(getWordsFromFile.ReadLine());    
-                i++;
+                ConsoleKeyInfo inputChar = Console.ReadKey();
+
+                if(inputChar.Key == ConsoleKey.Enter)
+                {
+                    currentText = MakeLineOfWords();
+                    fullText += currentText;
+                    Console.WriteLine("\n" + currentText);
+                }
+                else if(inputChar.Key == ConsoleKey.Backspace)
+                {
+                    if (inputText != null)
+                        inputText = inputText.Remove(inputText.Length - 1);
+                }
+                else
+                {
+                    inputText += inputChar.KeyChar;
+                }
             }
-            getWordsFromFile.Close();
+
+            Console.WriteLine("\n\n" + fullText + "\n\n" + inputText);
+
+            End();
+        }
+       
+        private string MakeLineOfWords()
+        {
+            string text = null;
+            Random rand = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                text += (words[rand.Next(0, words.Count)] + " ");
+            }
+            return text;
         }
     }
 }

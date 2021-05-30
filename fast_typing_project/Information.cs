@@ -22,6 +22,7 @@ namespace fast_typing_project
                 i++;
             }
 
+
             int choosenNumber = 1;
             try
             {
@@ -37,7 +38,22 @@ namespace fast_typing_project
                 }
 
             }
-            modes[choosenNumber - 1].Start();
+
+
+            Console.WriteLine("for how long?");
+            int duration = 0;
+            try
+            {
+                duration = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("please enter a valid time");
+                DispayOptions();
+            }
+
+
+            modes[choosenNumber - 1].Awake(duration);
             
         }
     }
