@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace fast_typing_project
 {
@@ -13,7 +14,7 @@ namespace fast_typing_project
         {
             if(inputText != null && outputText != null)
             {
-                string[] stringArray = inputText.Split(' ');
+                string[] stringArray = RemoveRepeatedSpaces(inputText).Split(' ');
                 for (int i = 0; i < stringArray.Length; i++)
                 {
                     inputList.Add(stringArray[i]);
@@ -41,6 +42,8 @@ namespace fast_typing_project
 
             for (int i = 0; i < inputList.Count; i++)
             {
+
+                Console.WriteLine("\n" + inputList[i] + " " + outputList[i] + " " + i);
                 if (inputList[i] == outputList[i])
                     rightWord++;
                 else
@@ -53,6 +56,29 @@ namespace fast_typing_project
             Console.WriteLine("\n\n WPN (word per minute): " + wpn);
             Console.WriteLine(" Raw WPN (word per minute): " + rawWpn);
             Console.WriteLine(" Time in seconds: " + time);
+        }
+
+        private string RemoveRepeatedSpaces(string input)
+        {
+            if (input.Length == 0) return input;
+
+            StringBuilder b = new StringBuilder();
+            Char[] chars = input.ToCharArray();
+            Char lastChar = chars[0];
+            b.Append(lastChar);
+            for (int i = 1; i < input.Length; i++)
+            {
+                if ((ConsoleKey)chars[i] == ConsoleKey.Spacebar && chars[i] == lastChar)
+                {
+                   // b.Append(chars[i]);
+                }
+                else
+                {
+                    b.Append(chars[i]);
+                    lastChar = chars[i];
+                }
+            }
+            return b.ToString();
         }
     }
 }
