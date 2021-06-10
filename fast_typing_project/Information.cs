@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+
+
 
 namespace fast_typing_project
 {
@@ -40,7 +43,7 @@ namespace fast_typing_project
             }
 
 
-            Console.WriteLine("for how long?");
+            Console.WriteLine("for how long in seconds?");
             int duration = 0;
             try
             {
@@ -52,9 +55,21 @@ namespace fast_typing_project
                 DispayOptions();
             }
 
-
+            Console.Clear();
+            CountdownFromThree();
             modes[choosenNumber - 1].Awake(duration);
             
         }
+
+        private void CountdownFromThree()
+        {
+            for (int i = 3; i > 0; i--)
+            {
+                Console.Write("\r{0}", i);
+                Thread.Sleep(1000);
+            }
+            Console.Clear();
+        }
+
     }
 }

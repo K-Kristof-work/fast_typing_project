@@ -8,7 +8,7 @@ namespace fast_typing_project
     class BasicModeFunctions
     {
         internal DateTime startTime;
-        internal TimeSpan breakDuration;
+        internal int time;
 
         internal List<string> Load(string path)
         {
@@ -24,19 +24,10 @@ namespace fast_typing_project
             return FileData;
         }
 
-        internal void CountdownFromThree()
-        {
-            for (int i = 3; i > 0; i--)
-            {
-                Console.Write("\r{0}", i);
-                Thread.Sleep(1000);
-            }
-            Console.Clear();
-        }
-
+        
         internal void End()
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(1500);
             while (true)
             {
                 if (Console.ReadKey().Key == ConsoleKey.Enter)

@@ -5,12 +5,15 @@ namespace fast_typing_project
 
     class MainClass
     {
-        public static void Main(string[] args)
-        {
-            Information Info = new Information();
-            Info.Addmodes(new Classic());
-            Info.DispayOptions();
+        static private readonly Information Info = new Information();
 
+        public static void Main()
+        {
+            Info.Addmodes(new ClassicMode());
+            Info.Addmodes(new ProgrammingMode());
+            Info.Addmodes(new EasyMode());
+            Info.Addmodes(new HardMode());
+            Info.DispayOptions();
         }
     }
 }

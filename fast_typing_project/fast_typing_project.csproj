@@ -34,8 +34,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Information.cs" />
     <Compile Include="IModes.cs" />
-    <Compile Include="Classic.cs" />
+    <Compile Include="ClassicMode.cs" />
     <Compile Include="BasicModeFunctions.cs" />
+    <Compile Include="CalculateTheResult.cs" />
+    <Compile Include="ProgramingMode.cs" />
+    <Compile Include="EasyMode.cs" />
+    <Compile Include="HardMode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

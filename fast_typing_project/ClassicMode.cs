@@ -5,23 +5,22 @@ using System.Threading;
 namespace fast_typing_project
 {
 
-    class Classic : BasicModeFunctions, IModes
+    class ClassicMode : BasicModeFunctions, IModes
     {
         public string Introduction { get; set; }
         public float DurationInSeconds { get; set; }
         private List<string> words = new List<string>();
 
-        public Classic()
+
+        public ClassicMode()
         {
             Introduction = "The classic typing test.";
         }
 
-        public void Awake(float duration)
+        public void Awake(int duration)
         {
-            Console.Clear();
             words = Load("Classic.txt");
-            CountdownFromThree();
-            breakDuration = TimeSpan.FromSeconds(duration);
+            time = duration;
             startTime = DateTime.UtcNow;
             Start();
         }
@@ -29,21 +28,21 @@ namespace fast_typing_project
         private void Start()
         {
             string inputText = null;
-            string fullText = null;
+            string outputText = null;
             string currentText = null;
 
             currentText = MakeLineOfWords();
-            fullText += currentText;
+            outputText += currentText;
             Console.WriteLine(currentText);
 
-            while (DateTime.UtcNow - startTime < breakDuration)
+            while (DateTime.UtcNow - startTime < TimeSpan.FromSeconds(time))
             {
                 ConsoleKeyInfo inputChar = Console.ReadKey();
 
                 if(inputChar.Key == ConsoleKey.Enter)
                 {
                     currentText = MakeLineOfWords();
-                    fullText += currentText;
+                    outputText += currentText;
                     Console.WriteLine("\n" + currentText);
                 }
                 else if(inputChar.Key == ConsoleKey.Backspace)
@@ -57,7 +56,8 @@ namespace fast_typing_project
                 }
             }
 
-            Console.WriteLine("\n\n" + fullText + "\n\n" + inputText);
+            CalculateTheResult calculate = new CalculateTheResult(inputText, outputText, time);
+            calculate.CalculateThenWriteTheResult();
 
             End();
         }

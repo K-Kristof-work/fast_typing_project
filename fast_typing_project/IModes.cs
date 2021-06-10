@@ -3,7 +3,7 @@
     interface IModes
     {
         string Introduction { get; set; }
-        void Awake(float duration);
+        void Awake(int duration);
 
     }
 }
